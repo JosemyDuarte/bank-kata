@@ -12,6 +12,14 @@ public class Transaction {
         this.amount = amount;
     }
 
+    public String getDate() {
+        return date;
+    }
+
+    protected int getAmount() {
+        return amount;
+    }
+
     @Override
     public int hashCode() {
         return Objects.hash(date, amount);

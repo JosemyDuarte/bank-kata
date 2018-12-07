@@ -2,11 +2,14 @@ package io.josemyduarte.features;
 
 import io.josemyduarte.bank.*;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.Mock;
+import org.mockito.junit.MockitoJUnitRunner;
 
 import static org.mockito.Mockito.inOrder;
 
+@RunWith(MockitoJUnitRunner.class)
 public class PrintStatementsFeature {
 
     @Mock
@@ -16,7 +19,7 @@ public class PrintStatementsFeature {
 
     @Test
     public void givenSomeTransactions_anAccountShouldPrintTransactionsInReverseOrder() {
-        Account account = new Account(new TransactionRepository(clock), new StatementsPrinter());
+        Account account = new Account(new TransactionRepository(clock), new StatementsPrinter(console));
         account.deposit(1000);
         account.withdrawal(100);
         account.deposit(500);
