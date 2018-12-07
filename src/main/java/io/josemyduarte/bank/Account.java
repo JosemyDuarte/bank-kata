@@ -1,24 +1,24 @@
 package io.josemyduarte.bank;
 
 public class Account {
+
+    private final TransactionRepository transactionRepository;
+    private final StatementsPrinter statementsPrinter;
+
+    public Account(final TransactionRepository transactionRepository, final StatementsPrinter statementsPrinter) {
+        this.transactionRepository = transactionRepository;
+        this.statementsPrinter = statementsPrinter;
+    }
+
     public void deposit(final int amount) {
-
-        // TODO implement deposit
-        throw new UnsupportedOperationException();
-
+        transactionRepository.addDeposit(amount);
     }
 
     public void withdrawal(final int amount) {
-
-        // TODO implement withdrawal
-        throw new UnsupportedOperationException();
-
+        transactionRepository.addWithdrawal(amount);
     }
 
     public void printStatement() {
-
-        // TODO implement printStatement
-        throw new UnsupportedOperationException();
-
+        statementsPrinter.printTransactions(transactionRepository.getTransactions());
     }
 }

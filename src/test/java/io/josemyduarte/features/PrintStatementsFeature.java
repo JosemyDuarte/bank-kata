@@ -2,6 +2,8 @@ package io.josemyduarte.features;
 
 import io.josemyduarte.bank.Account;
 import io.josemyduarte.bank.Console;
+import io.josemyduarte.bank.StatementsPrinter;
+import io.josemyduarte.bank.TransactionRepository;
 import org.junit.Test;
 import org.mockito.InOrder;
 import org.mockito.Mock;
@@ -15,7 +17,7 @@ public class PrintStatementsFeature {
 
     @Test
     public void givenSomeTransactions_anAccountShouldPrintTransactionsInReverseOrder() {
-        Account account = new Account();
+        Account account = new Account(new TransactionRepository(), new StatementsPrinter());
         account.deposit(1000);
         account.withdrawal(100);
         account.deposit(500);
