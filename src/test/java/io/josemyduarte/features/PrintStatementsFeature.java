@@ -7,6 +7,7 @@ import org.mockito.InOrder;
 import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.inOrder;
 
 @RunWith(MockitoJUnitRunner.class)
@@ -19,6 +20,7 @@ public class PrintStatementsFeature {
 
     @Test
     public void givenSomeTransactions_anAccountShouldPrintTransactionsInReverseOrder() {
+        given(clock.todayAsString()).willReturn("01/04/2014", "02/04/2014", "10/04/2014");
         Account account = new Account(new TransactionRepository(clock), new StatementsPrinter(console));
         account.deposit(1000);
         account.withdrawal(100);
