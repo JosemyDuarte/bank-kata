@@ -21,7 +21,7 @@ public class PrintStatementsFeature {
     @Test
     public void givenSomeTransactions_anAccountShouldPrintTransactionsInReverseOrder() {
         given(clock.todayAsString()).willReturn("01/04/2014", "02/04/2014", "10/04/2014");
-        Account account = new Account(new TransactionRepository(clock), new StatementsPrinter(console));
+        Account account = new Account(new TransactionRepositoryInMemory(clock), StatementsPrinterDefault.createStatementsPrinterDefault(console));
         account.deposit(1000);
         account.withdrawal(100);
         account.deposit(500);

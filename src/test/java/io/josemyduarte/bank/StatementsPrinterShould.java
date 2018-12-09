@@ -25,7 +25,7 @@ public class StatementsPrinterShould {
 
     @Before
     public void setUp() {
-        statementsPrinter = new StatementsPrinter(console);
+        statementsPrinter = StatementsPrinterDefault.createStatementsPrinterDefault(console);
     }
 
     @Test
